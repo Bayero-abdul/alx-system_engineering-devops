@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -c  $(find ./olle -printf '%#m\n') ./hello
+chmod $(find ./olleh -printf '%#m\n') ./hello
