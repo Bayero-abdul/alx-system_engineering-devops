@@ -1,2 +1,2 @@
 #!/bin/bash
-find -path './[^.]*' -prune -type d -print0 | xargs -0 -I '{}' sh -c "chmod 711 '{}'"
+find -path './[^.]*' -prune -type d -print0 | xargs -0 -I '{}' sh -c "chmod 755 '{}'"
