@@ -1,0 +1,2 @@
+#!/bin/bash
+find -path './[^.]*' -prune -type d,f -print0 | xargs -0 -I '{}' sh -c "chown vincent:staff '{}'"
