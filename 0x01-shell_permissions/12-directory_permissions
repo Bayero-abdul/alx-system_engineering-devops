@@ -1,0 +1,2 @@
+#!/bin/bash
+mkdir my_dir | find -path ./m*r -prune -type d -print| xargs -0 -I '{}' sh -c "chmod 751 {}"
