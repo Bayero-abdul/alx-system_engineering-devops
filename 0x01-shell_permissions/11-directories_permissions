@@ -1,0 +1,2 @@
+#!/bin/bash
+for DIR in $(find -type d); do chmod 711 $DIR; done
