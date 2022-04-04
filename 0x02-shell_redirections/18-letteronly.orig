@@ -1,0 +1,6 @@
+#!/bin/bash
+<<<<<<< HEAD
+cat /etc/ssh/sshd_config | grep '^[a-zA-Z]'
+=======
+cat /etc/ssh/sshd_config | grep '^[[:upper:]][[:lower:]]'
+>>>>>>> 3f3557f544439e99c2d861d438d1a9a9124f7bc0
