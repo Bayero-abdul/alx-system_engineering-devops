@@ -1,2 +1,2 @@
 #!/bin/bash/
-ls -l | grep "^d" | wc -l
+find .vim/* -maxdepth 0 -type d | wc -l
