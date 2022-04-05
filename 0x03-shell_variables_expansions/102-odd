@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 | cat -n |  sed -n 'p;n' | tr -s ' ' | cut -f2
+ls -1 | cat -n | grep -v '[2468]' | tr -s ' ' | cut -f2
