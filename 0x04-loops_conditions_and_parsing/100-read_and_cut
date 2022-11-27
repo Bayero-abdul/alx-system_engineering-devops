@@ -6,7 +6,7 @@
 #	Home directory path for the user
 
 list=$(cat /etc/passwd)
-while read var
+while read -r var
 do
 	echo "$var" | cut -d ":" -f 1,3,6
 done < <(echo "$list")
