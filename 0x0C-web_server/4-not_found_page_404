@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Installs nginx web server
+sudo apt-get -y install nginx
+sudo service nginx start
+sudo touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo sed '19 s|^[[:space:]]*$|\trewrite ^/redirect_me https://www.grymoire.com/Unix/Sed.html permanent;\n|' -i /etc/nginx/sites-enabled/default
+sudo echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sudo sed '20 s|^[[:space:]]*$|\terror_page 404 /custom_404.html;\n|' -i /etc/nginx/sites-enabled/default
+sudo service nginx restart
