@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Installs nginx web server
 
+#sudo sed '19 s|^[[:space:]]*$|\trewrite ^/redirect_me https://www.grymoire.com/Unix/Sed.html permanent;\n|' -i /etc/nginx/sites-enabled/default
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
 sudo touch /var/www/html/index.html
 echo "Hello World!" > /var/www/html/index.html
-sudo sed '19 s|^[[:space:]]*$|\trewrite ^/redirect_me https://www.grymoire.com/Unix/Sed.html permanent;\n|' -i /etc/nginx/sites-enabled/default
+sudo sed '/server_name _;/a \trewrite ^/redirect_me https://www.grymoire.com/Unix/Sed.html permanent;\n|' -i /etc/nginx/sites-enabled/default
 sudo service nginx restart
