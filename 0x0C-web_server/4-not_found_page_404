@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install nginx
+# Install nginx server
 # Redirect a url
 # Have a custom 404 page
 
