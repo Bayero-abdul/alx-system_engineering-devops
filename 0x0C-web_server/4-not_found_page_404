@@ -11,8 +11,8 @@ echo "Hello World!" > /var/www/html/index.html
 location="\n\tlocation /redirect_me {\n\trewrite ^/redirect_me(.*)$ https://www.grymoire.com/Unix/Sed.html permanent;\n\t}"
 sudo sed "/server_name _;/ a\ $location" -i /etc/nginx/sites-enabled/default
 
-echo "Ceci n'est pas une page\n" > /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 error="\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\troot /var/www/html;\n\tinternal;\n\t}"
-sudo sed "/server_name _; a\ $error" -i /etc/nginx/sites-enabled/default
+sudo sed "/server_name _;/ a\ $error" -i /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
