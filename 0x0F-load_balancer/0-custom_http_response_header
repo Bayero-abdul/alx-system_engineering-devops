@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Install nginx server
+# Redirect a url
+# Have a custom 404 page
+# Configure Nginx so that its HTTP response contains a custom header
+#       The name of the custom HTTP header must be X-Served-By
+
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+
+location="\n\tlocation /redirect_me {\n\trewrite ^/redirect_me(.*)$ https://www.grymoire.com/Unix/Sed.html permanent;\n\t}"
+sudo sed "/server_name _;/ a\ $location" -i /etc/nginx/sites-enabled/default
+
+sudo echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+error="\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+sudo sed "/server_name _;/a\ $error" -i /etc/nginx/sites-enabled/default
+
+custom_header="\n\tadd_header X-Served-By \$HOSTNAME;"
+sudo sed "/server_name _;/ a\ $custom_header" -i /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
