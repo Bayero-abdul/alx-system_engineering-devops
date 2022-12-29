@@ -1,13 +1,32 @@
 # configuration for nginx server
 
-exec {'/usr/bin/env apt-get -y update':}
+include stdlib
 
-exec {'/usr/bin/env apt-get -y install nginx':}
+exec {'update file':
+  command => '/usr/bin/env apt-get -y update',
+  before  =>  Exec['install nginx'],
+}
 
-exec {'/usr/bin/env echo "Hello World!" > /var/www/html/index.html':}
+exec {'install nginx':
+  command =>  '/usr/bin/env apt-get -y install nginx',
+  require => Exec['update file'],
+}
 
-exec {'/usr/bin/env sed "/server_name _;/ a\ \\n\\tlocation /redirect_me {\\n\\trewrite ^/redirect_me(.*)$ https://www.grymoire.com/Unix/Sed.html permanent;\\n\\t}" -i /etc/nginx/sites-enabled/default':}
+file {'index.html':
+  ensure  => present,
+  path    =>  '/var/www/html/index.html',
+  content => "Hello World!\n",
+  require => Exec['install nginx'],
+}
 
-exec {'/usr/sbin/env nginx -t':}
+file_line {'redirect':
+  path    => '/etc/nginx/sites-enabled/default',
+  after   => '^\tserver_name _;',
+  line    => "\n\tlocation /redirect_me {\n\trewrite ^/redirect_me(.*)$ https://www.grymoire.com/Unix/Sed.html permanent;\n\t}",
+  require =>  File['index.html'],
+}
 
-exec {'/usr/sbin/env service nginx restart':}
+exec {'restart nginx':
+  command =>  '/usr/sbin/service nginx restart',
+  require =>  File_line['redirect'],
+}
