@@ -2,5 +2,4 @@
 # configures nginx to listen on port 80
 
 sed '/[::]/! s/8080/80/' -i /etc/nginx/sites-enabled/default
-sudo pkill -f "nginx" & wait "$!"
 service nginx restart
