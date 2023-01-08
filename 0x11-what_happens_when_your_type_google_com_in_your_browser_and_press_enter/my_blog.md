@@ -130,3 +130,8 @@ A firewall is a security tool, either hardware or software, that can help safegu
 A firewall can aid in preventing malicious software from infecting your computer in addition to blocking unwanted traffic.
 
 Different levels of protection may be offered by firewalls. Determining how much protection you require is the key.
+
+
+Below is an image illustrating the process:
+
+![alt text](https://cdn.hashnode.com/res/hashnode/image/upload/v1642958188237/mqd2v3u7b.jpeg?auto=compress,format&format=webp)
