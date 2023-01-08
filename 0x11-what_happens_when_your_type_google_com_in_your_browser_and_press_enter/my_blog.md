@@ -56,28 +56,41 @@ Once the browser has received all the resources it needs, it displays the web pa
 how your browser displays the website.
 
 Your browser contacts a DNS server to resolve a web address into an IP address when you type it into the address bar and press enter. When your browser has the IP address, it will then use that address to get in touch with the web server and ask for the requested webpage.
+
 Your browser will then receive the HTML code for the web page from the web server. In accordance with the HTML code, the browser will then render the website.
+
 The CSS code used to style the website is also transmitted from the web server to the browser. A web page's interactivity is added using JavaScript code, which is also sent from the web server.
+
 The web server also sends other files, such as images, videos, and other files, which are used to add multimedia to the website.
+
 The web page is displayed in your browser once all of the files have been received.
 
 
 ## 4. How a web server and your browser interact.
 
 A web server begins to operate as soon as a browser sends a request to it. Prior to beginning to respond, it must first comprehend the request.
+
 The server first verifies the URL that the browser has requested. After that, it must locate the actual file matching that URL on the server. For instance, the server will look for a file named about.html if the URL is http://example . com/about.
+
 The file will be located by the server, read, and its contents sent back to the browser. The user will then see the page rendered by the browser.
+
 The server will notify the browser of an error if it cannot locate the file.
+
 The entire process happens very quickly, and frequently the user won't even notice it.
 
 
 ## 5. how a web server handles a request.
 
 Any time you enter a web address into your browser, your computer makes contact with the web server for that domain name. Your browser sends a request to the server for the particular page you want to view once your computer has located it.
+
 The HTML code for the page you requested is then sent by the server to your browser as a response. The content is then displayed to you by your browser as it renders the page.
+
 Your browser must understand how to communicate with web servers for this process to function. Using the Hypertext Transfer Protocol (HTTP), it accomplishes this.
+
 Every web browser and web server utilizes the straightforward HTTP communication protocol. It lays out the formatting and transmission requirements for messages as well as the appropriate responses to different commands.
+
 Your browser makes its first contact with the domain name server (DNS) when you type in a web address in order to determine the IP address of the web server. Once it has the IP address, it contacts the server with an HTTP request.
+
 The server then replies with an HTTP response. Both the requested data and the request status are included in this response.
 
 Usually, HTML code is used to transmit data from the server to the browser. The user is then presented with the web page after the browser renders this code.
@@ -88,9 +101,13 @@ Usually, HTML code is used to transmit data from the server to the browser. The 
 Your browser is continuously working to load and display the pages you request as you browse the internet. Have you ever wondered what occurs in the background?
 
 Your computer contacts a domain name server (DNS) to look up the IP address for the website you want to visit when you enter a web address into your browser. A request for the website's content is sent to the server by your computer once it has the IP address.
+
 Following that, the server sends packets—small digital units—of the content back to your browser. Your browser starts rendering the page as the packets start to arrive.
+
 The browser first loads any required HTML and CSS files. A web page's structure is determined by the HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) codes, respectively.
+
 To create a Document Object Model (DOM), the browser then parses the HTML and CSS files. The structure and content of the page are represented by the DOM. It also includes guidelines for how the page should look.
+
 The browser then shows the page's contents on the screen as a final step.
 
 
@@ -113,4 +130,3 @@ A firewall is a security tool, either hardware or software, that can help safegu
 A firewall can aid in preventing malicious software from infecting your computer in addition to blocking unwanted traffic.
 
 Different levels of protection may be offered by firewalls. Determining how much protection you require is the key.
-
