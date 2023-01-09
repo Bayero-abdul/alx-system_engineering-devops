@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # configures nginx to listen on port 80
+
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 kill -HUP $(ps -ef | grep nginx | grep master | awk '{print $2}')
