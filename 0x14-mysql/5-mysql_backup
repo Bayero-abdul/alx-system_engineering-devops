@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if (( $# != 1 ))
+then
+        echo "Usage: ./5-mysql_backup [password]"
+else
+        PASSWD=$1
+        /usr/bin/mysqldump -u root -p"$PASSWD" --all-databases > backup.sql
+        tar -czvf "$(date +%d-%m-%Y)".tar.gz backup.sql
+fi
