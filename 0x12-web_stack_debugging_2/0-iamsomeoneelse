@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# run whoami command with the priveleges of a specified user
+
+sudo -u "$1" bash -c "whoami"
