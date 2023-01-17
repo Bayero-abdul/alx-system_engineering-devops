@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-"""using this REST API,
-for a given employee ID,
-return information about his/her TODO list progress.
-
-"""
+"""using this REST API, or a given employee ID,
+return information about his/her TODO list progress."""
+import requests
+import sys
 
 
 if __name__ == '__main__':
-
-    import requests
-    import sys
 
     id = int(sys.argv[1])
     API = 'https://jsonplaceholder.typicode.com'
