@@ -4,9 +4,7 @@
 
 """
 
-
-def main():
-    """main function"""
+if __name__ == '__main__':
 
     import requests
     import sys
@@ -66,7 +64,3 @@ def get_employee_details(id, json_todos):
             break
 
     return (cnt_done, cnt_tasks, titles)
-
-
-if __name__ == '__main__':
-    main()
