@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-"""display on the standard output the employee TODO list progress."""
+"""display on the standard output the employee TODO list progress.
+
+"""
 
 
 def main():
