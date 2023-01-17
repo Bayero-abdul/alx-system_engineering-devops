@@ -4,6 +4,8 @@
 
 
 def main():
+    """main function"""
+
     import requests
     import sys
 
