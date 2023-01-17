@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """using this REST API, or a given employee ID,
 put the information about his/her TODO list progress
-in a CSV file
+in a CSV file.
 """
 
 import csv
