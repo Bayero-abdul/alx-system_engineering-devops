@@ -3,7 +3,6 @@
 put the information about his/her TODO list progress
 in a CSV file.
 """
-
 import csv
 import requests
 import sys
