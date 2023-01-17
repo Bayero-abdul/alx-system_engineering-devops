@@ -13,7 +13,7 @@ if __name__ == '__main__':
     id = int(sys.argv[1])
     API = 'https://jsonplaceholder.typicode.com'
     json_todos = requests.get(API + '/todos').json()
-    u_name = requests.get(API + '/users/' + str(id)).json().get('name')
+    u_name = requests.get(API + '/users/' + str(id)).json().get('username')
 
     tasks = list(filter(lambda u_id: u_id.get('userId') == id,
                         json_todos))
