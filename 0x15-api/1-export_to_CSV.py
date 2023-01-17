@@ -23,7 +23,7 @@ if __name__ == '__main__':
              'title': x.get("title")
              } for x in tasks]
 
-    with open(f'{id}.csv', 'w') as csvfile:
+    with open(str(id)+'.csv', 'w') as csvfile:
         writer = csv.DictWriter(csvfile,
                                 fieldnames=["id",
                                             "name",
