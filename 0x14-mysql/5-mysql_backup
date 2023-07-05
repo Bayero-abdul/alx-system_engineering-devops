@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# backup database and create a compress archieve
-
-PASSWD=$1
-/usr/bin/mysqldump -u root -p"$PASSWD" --all-databases > backup.sql
-tar -czvf "$(date +%d-%m-%Y)".tar.gz backup.sql
