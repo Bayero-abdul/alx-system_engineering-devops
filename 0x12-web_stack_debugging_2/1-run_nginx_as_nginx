@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Sets nginx as the user and configures nginx to
+# listen on port 8080
 
 # Change permissions of nginx.conf
 chmod 644 /etc/nginx/nginx.conf
