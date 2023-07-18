@@ -6,3 +6,4 @@ if [ "$1" ]; then
 else
 	whoami
 fi
+
