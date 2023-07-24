@@ -37,7 +37,7 @@ def main():
 
             for task in todos:
                 if task.get('completed'):
-                    print("\t{}".format(task.get('title')))
+                    print("\t {}".format(task.get('title')))
 
 
 if __name__ == '__main__':
