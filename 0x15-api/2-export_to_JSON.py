@@ -29,8 +29,7 @@ def main():
                 'completed'), 'username': username} for task in todos]}
 
             with open('{}.json'.format(id), 'w') as json_file:
-                for task in todos:
-                    json.dump(dict, json_file)
+                json.dump(dict, json_file)
 
 
 if __name__ == '__main__':
