@@ -1,56 +1,38 @@
 #!/usr/bin/python3
-"""
-module: queries the Reddit API and returns the titles of
-the first 10 hot article listed for a given subreddit
-"""
-
+'''2-recurse module'''
 import requests
+from sys import argv
+from itertools import islice
 
 
-def get_host_list_titles(L, i, size, hot_list=[]):
-    """
-    """
-    if (i < size):
-        hot_list.append(L[i].get('data').get('title'))
-        i = i + 1
-        get_host_list_titles(L, i, size, hot_list)
-    return hot_list
+def recurse(subreddit, hot_list=[], after=None):
+    '''Queries the Reddit API and returns host posts listed for a given
+    subreddit'''
 
+    if (subreddit is None):
+        print(None)
+        return
+    req = "https://www.reddit.com/r/{}.json?after={}&limit=24".\
+        format(subreddit, after)
+    v = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101"
+    v += " Firefox/15.0.1"
+    h = {'User-agent': v}
+    res = requests.get(req, headers=h, allow_redirects=False)
+    if res.status_code == 200:
+        hot_posts = res.json()['data']['children']
+        if (hot_posts is None):
+            return None
+        titles = []
+        for post in hot_posts:
+            titles.append(post['data']['title'])
 
-def recurse_after(subreddit, hot_list=[], after=None):
-    """
-    Returns the titles of the hot articles listed for a given subreddit
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {
-        "User-Agent": "YourApp/1.0 by YourUsername (Contact: your@email.com)"
-    }
+        for title in sorted(titles):
+            hot_list.append(title)
 
-    try:
-        response = requests.get(url, headers=headers, params={"after": after})
-        response.raise_for_status()  # Raise an exception if the request was unsuccessful
-
-        data = response.json().get('data')
-        kinds = data.get('children')
-        hot_list = get_host_list_titles(kinds, 0, len(kinds), hot_list)
-
-        # Get the "after" token from the response to fetch the next page
-        after = data.get("after")
-
-        if after:
-            # Recursively call the function with the new "after" token
-            return recurse_after(subreddit, hot_list, after)
-        else:
+        after = res.json()['data']['after']
+        if after is None:
             return hot_list
-
-    except requests.exceptions.RequestException as e:
-        print("Error:", e)
+        else:
+            return recurse(subreddit, hot_list, after)
+    else:
         return None
-
-
-def recurse(subreddit, hot_list=[]):
-    """
-    Returns the titles of
-    the hot articles listed for a given subreddit
-    """
-    return recurse_after(subreddit, hot_list=[])
