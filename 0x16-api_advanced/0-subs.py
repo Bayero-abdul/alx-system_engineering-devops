@@ -11,6 +11,9 @@ def number_of_subscribers(subreddit):
     """
     Returns the number of subscribers (not active users, total subscribers) for a given subreddit
     """
+    if (subreddit is None):
+        return 0
+
     headers = {
         "User-Agent": "Github/1.0 by Bayero-abdul (Contact: bayeroa65@gmail.com)"
     }
@@ -19,8 +22,8 @@ def number_of_subscribers(subreddit):
     response = requests.get(
         url, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json().get('data')
-        return (data['subscribers'])
-    else:
-        return (0)
+    if (str(response.status_code)[0] == '4'):
+        return 0
+
+    data = response.json().get('data')
+    return (data['subscribers'])
