@@ -17,7 +17,8 @@ def top_ten(subreddit):
         return
 
     headers = {
-        "User-Agent": "Github/1.0 by Bayero-abdul (Contact: bayeroa65@gmail.com)"
+        "User-Agent": "Github/1.0 by Bayero-abdul \
+        (Contact: bayeroa65@gmail.com)"
     }
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
